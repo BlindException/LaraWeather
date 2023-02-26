@@ -24,8 +24,8 @@ class StoreFavoriteLocationRequest extends FormRequest
     public function rules()
     {
         return [
-'user_id' => ['required'],            
-'query' => ['required'],
+            'user_id' => ['required'],
+            'query' => ['required'],
             'name' => ['required', 'string', 'max:255', 'unique:favoritelocations'],
             'region' => ['required', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],

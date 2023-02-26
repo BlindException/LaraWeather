@@ -19,23 +19,17 @@ use App\Http\Controllers\FavoriteLocationController;
 |
 */
 
-Route::get('/',LiveWeatherPanel::class);
-    
+Route::get('/', LiveWeatherPanel::class);
 
-
-                                
-    
-
-Route::get('/dashboard', function () 
-{
-        return view('dashboard', [
+Route::get('/dashboard', function () {
+    return view('dashboard', [
         'favoritelocations' => auth()->user()->favoriteLocations()->get()->sortBy('name'),
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('favoritelocations', FavoriteLocationController::class)
-->only(['create', 'store', 'index', 'destroy'])
-->middleware(['auth', 'verified']);
+    ->only(['create', 'store', 'index', 'destroy'])
+    ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -43,4 +37,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

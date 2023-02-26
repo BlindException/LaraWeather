@@ -39,7 +39,7 @@ class FavoriteLocationController extends Controller
     public function store(StoreFavoriteLocationRequest $request)
     {
         $validated = $request->validated();
-FavoriteLocation::create($validated);
+        FavoriteLocation::create($validated);
         return redirect(route('dashboard'));
     }
 

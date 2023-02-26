@@ -15,6 +15,6 @@
             {{ ($forecastDay->date) }}
         </p>
         @empty
-            @endforelse
+        @endforelse
     </section>
 </div>
